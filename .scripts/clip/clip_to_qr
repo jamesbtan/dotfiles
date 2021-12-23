@@ -1,0 +1,6 @@
+#!/bin/sh
+
+TMPFILE="$(mktemp XXXXXXXXXX.svg)"
+qrencode -t SVG "$(xsel -ob)" -o "$TMPFILE"
+inkview "$TMPFILE"
+rm "$TMPFILE"

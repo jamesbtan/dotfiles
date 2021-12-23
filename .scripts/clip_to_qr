@@ -1,6 +1,0 @@
-#!/bin/sh
-
-TMPFILE="$(mktemp)"
-qrencode "$(xclip -o -sel c)" -o "$TMPFILE"
-sxiv -s f -g 150x150 "$TMPFILE"
-rm "$TMPFILE"

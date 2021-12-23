@@ -13,8 +13,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd extendedglob
 unsetopt beep
-bindkey -v
 # End of lines configured by zsh-newuser-install
+set -o vi
 bindkey "^R" history-incremental-pattern-search-backward
 [ -d "$HOME"/.sh/ ] && for file in $(ls "$HOME"/.sh/) ; do
 	. "$HOME"/.sh/"$file"

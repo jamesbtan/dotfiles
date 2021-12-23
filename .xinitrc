@@ -1,10 +1,15 @@
 #!/bin/sh
-xwallpaper --daemon --zoom ~/Pictures/wallpaper/rubik_melt.jpg &
-setxkbmap -option "ctrl:nocaps" &
+setxkbmap -option ctrl:swapcaps &
 sxhkd &
+xrdb -merge "$HOME"/.Xresources &
 xsetroot -cursor_name "left_ptr" &
-#while : ; do
-#	xsetroot -name "$(genstatus)"
-#	sleep 1
-#done &
-exec 2bwm
+rta
+# xwallpaper --zoom "$HOME/Pictures/wallpaper/chomusuke.png"
+xsetroot -solid black
+
+while : ; do
+	xsetroot -name "$(genstatus)"
+	sleep 30
+done &
+
+exec dwm

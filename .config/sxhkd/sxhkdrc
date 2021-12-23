@@ -1,33 +1,43 @@
-uper + w
-	$BROWSER
-super + semicolon
-	$LOCKER
-super + Return
-	sh -c "$XTERMINAL"
-super + z
-	color_to_clip
-super + p
-	sh -c $RUNNER
+super + w
+	firefox-nightly
 super + shift + w
-	rofi -show window
-super + shift + p
-	rofi-pass
+	brave
+super + semicolon
+	slock
+super + a
+	st
 super + e
-	emoji_to_clip
+	dmenu_run
+super + shift + e
+	9 acme
+#super + x
+#	rofi -show window
 super + s
-	genstatus | rofi -dmenu -lines 3 > /dev/null
-super + o ; o
-	xclip -o -sel c | clip_to_memecase | xclip -i -sel c
-super + o ; m
-	clip_to_mpv
+	genstatus | tr '|' '\n' | dmenu
+#super + o ; o
+#	clip_to_memecase
+#super + o ; m
+#	clip_to_mpv
 super + o ; d
 	date +%F | tr -d '\n' | xclip -i -sel c
 super + o ; q
 	clip_to_qr
+#super + o ; z
+#	color_to_clip
+super + o ; e
+	emoji_to_clip
+#super + o ; p
+#	sleep 0.1 ; scrot -sf "$HOME/Pictures/screenshot/$(date +%F-%H%M%S-%N)_screenshot.png" -e 'xclip -selection clipboard -target image/png -i $f'
 Print
-	import -window root "$HOME/Pictures/screenshot/$(date +%F-%T)_screenshot.png"
+	scrot "$HOME/Pictures/screenshot/$(date +%F-%H%M%S-%N)_screenshot.png"
 ctrl + Print
-	import "$HOME/Pictures/screenshot/$(date +%F-%T)_screenshot.png"
+	scrot -s -d 0.1 -F "$HOME/Pictures/screenshot/$(date +%F-%H%M%S-%N)_screenshot.png"
+shift + Print
+	scrot -u "$HOME/Pictures/screenshot/$(date +%F-%H%M%S-%N)_screenshot.png"
+shift + XF86MonBrightnessDown
+	xbacklight -dec 1
+shift + XF86MonBrightnessUp
+	xbacklight -inc 1
 XF86MonBrightnessDown
 	xbacklight -dec 5
 XF86MonBrightnessUp
@@ -40,7 +50,7 @@ XF86AudioMute
 	amixer sset 'Master' toggle
 ctrl + alt + Delete
 	pkill Xorg
-super + shift + q
-	pkill Xorg
 super + shift + r
 	pkill -SIGUSR1 sxhkd
+#F{1-3}
+#	xdotool click {1-3}

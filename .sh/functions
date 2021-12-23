@@ -1,8 +1,9 @@
 #!/bin/sh
-f() {
-    fff "$@"
-    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || exit
-}
+# f() {
+#     fff "$@"
+#     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || exit
+# }
+
 n()
 {
     # Block nesting of nnn in subshells
@@ -29,4 +30,16 @@ n()
             . "$NNN_TMPFILE"
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
+}
+
+cmsmnt()
+{
+    sshfs jtan@cmslpc-sl7.fnal.gov:/uscms/homes/j/jtan ~/mnt/lpc
+    sshfs jtan@cmslpc-sl7.fnal.gov:/uscms_data/d3/jtan ~/mnt/nobackup
+}
+
+cmsumnt()
+{
+    fusermount -u ~/mnt/lpc
+    fusermount -u ~/mnt/nobackup
 }

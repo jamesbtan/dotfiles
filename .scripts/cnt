@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -f /tmp/counter ] || echo "0" > /tmp/counter
+[ "$#" -eq 1 ] && (echo "$1" > /tmp/counter) && exit 0
+value="$(cat /tmp/counter)"
+echo "$value + 1" | bc | tee /tmp/counter

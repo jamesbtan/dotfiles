@@ -1,8 +1,15 @@
-.pdf:mupdf
-.html:firefox-nightly
-.docx:libreoffice
-.xlsx:libreoffice
-.xls:libreoffice
-image:feh
+terminal=st
+interm=vis
 
+text:vis
+image:sxiv
+video:mpv
+
+?'^http:\/\/':firefox-nightly
+?'^https:\/\/':firefox-nightly
+?'^www.':firefox-nightly
+
+.pdf:mupdf
+
+directory:echo
 default:echo

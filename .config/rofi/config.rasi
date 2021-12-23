@@ -1,5 +1,0 @@
-configuration {
-	modi: "window,run,ssh";
-	font: "mono 12";
-	theme: "Arc-Dark";
-}

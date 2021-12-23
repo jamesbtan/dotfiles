@@ -1,2 +1,0 @@
-#!/bin/sh
-colorpicker | awk '{print $NF}' | xclip -i

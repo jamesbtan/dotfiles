@@ -1,0 +1,7 @@
+#!/bin/sh
+for file in /proc/*/status; do
+	swap="$(grep 'VmSwap' "$file" | cut -f 2)"
+	[ -z "$swap" ] && continue
+	name="$(grep 'Name' "$file" | cut -f 2)"
+	printf "%s : %s\n" "$swap" "$name"
+done | sort -n

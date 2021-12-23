@@ -1,12 +1,30 @@
 #!/bin/sh
-[ -d "$HOME"/.scripts ] && \
-	PATH="$PATH:$HOME/.scripts"
-[ -d "$HOME"/.cargo/bin ] && \
-	PATH="$HOME/.cargo/bin:$PATH"
-[ -d "$HOME"/.local/bin ] && \
-	PATH="$HOME/.local/bin:$PATH"
-[ -d /opt/wine-osu/bin ] && \
-	PATH="/opt/wine-osu/bin:$PATH"
-[ -d "$HOME"/bin ] && \
-	PATH="$PATH:$HOME/bin"
+
+add_path() {
+	case ":${PATH}:" in
+	    *:"$1":*)
+	        ;;
+	    *)
+	        # Prepending path in case a system-installed rustc needs to be overridden
+	        export PATH="$1:$PATH"
+	        ;;
+	esac
+}
+
+add_rpath() {
+	add_path "$1"
+	find -L "$1" -mindepth 1 -type d | while read dir; do
+		add_path "$dir"
+	done
+}
+
+add_rpath "$HOME"/.local/bin
+add_rpath "$HOME"/.scripts
+add_path "$HOME"/bin
+add_path "$HOME/.cabal/bin"
+add_path "$HOME/.ghcup/bin"
+add_path "$HOME"/.cargo/bin
+add_path "$HOME"/.emacs.d/bin
+add_path "$HOME"/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin
+add_path /opt/wine-osu/bin
 export PATH
