@@ -1,6 +1,8 @@
 #!/bin/sh
 
+txt="$(xsel -ob)"
+[ -z "$txt" ] && exit
 TMPFILE="$(mktemp XXXXXXXXXX.svg)"
-qrencode -t SVG "$(xsel -ob)" -o "$TMPFILE"
+trap 'rm "$TMPFILE"' EXIT
+qrencode -t SVG "$txt" -o "$TMPFILE"
 inkview "$TMPFILE"
-rm "$TMPFILE"

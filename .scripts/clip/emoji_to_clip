@@ -1,2 +1,2 @@
 #!/bin/sh
-dmenu -l 7 < "$HOME"/.config/emoji | cut -d ' ' -f 1 | tr -d '\n' | xsel -ib
+rofi -dmenu < "$HOME"/.config/emoji | cut -d ' ' -f 1 | tr -d '\n' | xsel -ib
