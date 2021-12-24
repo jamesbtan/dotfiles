@@ -16,7 +16,7 @@ unsetopt beep
 # End of lines configured by zsh-newuser-install
 set -o vi
 bindkey "^R" history-incremental-pattern-search-backward
-[ -d "$HOME"/.sh/ ] && for file in $(ls "$HOME"/.sh/) ; do
-	. "$HOME"/.sh/"$file"
+[ -d "$HOME"/.sh/ ] && for file in "$HOME"/.sh/* ; do
+	. "$file"
 done
 PS1='%1~ %f%# '

@@ -1,5 +1,5 @@
 #!/bin/sh
-alias g='vi'
+alias g='kak'
 alias gg='g ~/Documents/todo.txt'
 alias gi='cd ~/Documents/school'
 alias gn='cd ~/Documents/notes'
@@ -8,7 +8,7 @@ alias gd='cd ~/Documents/drawing'
 alias gdr='cd ~/Documents/drawing/refs'
 alias gz='cd ~/Documents/notes/zet'
 
-alias fd='cd $(find -type d | fzf)'
+#alias fd='cd $(find -type d | fzf)'
 
 alias ls='ls -v --color=auto'
 

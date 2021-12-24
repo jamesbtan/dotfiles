@@ -1,7 +1,16 @@
 #!/bin/sh
-# AUDIO="$(amixer get 'Master' | tail -n 1 | tr ' ' '\n' | tail -n 2 | tr -d '\n' | sed 's/ $/\n/')"
-BATTERY="$(acpi | cut -d , -f 2 | tr -d ' ')"
+# AUDIO="$(amixer get 'Master' | tail -n 1 | sed 's/].*//;s/.*\[//')"
+[ $# -eq 0 ] \
+	&& BATTERY="$(acpi | cut -d , -f 2 | sed 's/^ *//')" \
+	|| BATTERY="$(acpi | cut -d , -f 2,3 | sed 's/^ *//')"
 # BRIGHTNESS="$(printf "%.1f" "$(xbacklight)")"
-TIME="$(date +"%m-%d %R")"
-printf " B:%s | T:%s " "$BATTERY" "$TIME"
-#printf "B:%s\nT:%s" "$BATTERY" "$TIME"
+[ $# -eq 0 ] \
+	&& TIME="$(date +"%m-%d %R")" \
+	|| TIME="$(date)"
+[ $# -eq 0 ] \
+	&& printf " B:%s | T:%s " "$BATTERY" "$TIME" \
+	&& exit \
+	|| printf "B:%s\nT:%s\n" "$BATTERY" "$TIME"
+printf "VPN:\n"
+nordvpn status | head -n 2 | cut -d ':' -f 2
+cal -3

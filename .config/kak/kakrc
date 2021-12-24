@@ -1,0 +1,9 @@
+set-option global disabled_hooks ".*-indent"
+set-option global ui_options terminal_assistant=off terminal_set_title=false
+
+hook global WinSetOption filetype=sh %{ set-option buffer lintcmd 'shellcheck -f gcc' }
+
+map global insert <tab> '<a-;><a-gt>'
+map global insert <s-tab> '<a-;><a-lt>'
+
+colorscheme tomorrow-night

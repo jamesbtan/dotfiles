@@ -1,6 +1,6 @@
 #!/bin/sh
 export EDITOR=vi
 
-. .sh/alias
-. .sh/functions
-. .sh/path
+[ -d "$HOME"/.sh/ ] && for file in "$HOME"/.sh/* ; do
+	. $file
+done

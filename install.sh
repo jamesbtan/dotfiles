@@ -1,24 +1,5 @@
 #!/bin/sh
 
-TMP_FILE="$(mktemp)"
-
-files_in_folder() {
-	folder=$1
-	find "$folder" -maxdepth 1 -not -type d -not -name "install.sh" >> "$TMP_FILE"
-}
-
-folders_in_folder() {
-	folder=$1
-	find "$folder" -maxdepth 1 -type d -not \( -name ".config" -o -name "." -o -name ".git" \) >> "$TMP_FILE"
-}
-
-link_dots() {
-	while IFS= read -r file ; do
-		base="${file#./}"
-		link "$(pwd)/$base" "$HOME/$base"
-	done < "$TMP_FILE"
-}
-
 link() {
 	src=$1
 	dest=$2
@@ -30,11 +11,17 @@ link() {
 	fi
 }
 
-# populate $TMP_FILE with links to make
-files_in_folder .
-folders_in_folder .
-files_in_folder .config
-folders_in_folder .config
+link_dots() {
+	home="$(find . -mindepth 1 -maxdepth 1 \
+		\( -path ./.git -o -path ./.config \) -prune \
+		-o ! -name "install.sh" -print)"
+	conf="$(find .config -mindepth 1 -maxdepth 1)"
+	printf "%s\n%s" "$home" "$conf" | \
+	while read -r file ; do
+		base="${file#./}"
+		link "$(pwd)/$base" "$HOME/$base"
+	done
+}
 
 # make links unless file already exists
 link_dots

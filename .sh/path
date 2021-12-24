@@ -13,7 +13,7 @@ add_path() {
 
 add_rpath() {
 	add_path "$1"
-	find -L "$1" -mindepth 1 -type d | while read dir; do
+	find -L "$1" -mindepth 1 -type d | while read -r dir ; do
 		add_path "$dir"
 	done
 }

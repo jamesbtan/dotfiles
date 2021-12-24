@@ -7,23 +7,19 @@ super + semicolon
 super + a
 	st
 super + e
-	dmenu_run
-super + shift + e
-	9 acme
-#super + x
-#	rofi -show window
+	rofi -show run
+#super + shift + e
+#	9 acme
+super + x
+	rofi -show window
 super + s
-	genstatus | tr '|' '\n' | dmenu
-#super + o ; o
-#	clip_to_memecase
+	genstatus x | rofi -dmenu
 #super + o ; m
 #	clip_to_mpv
 super + o ; d
 	date +%F | tr -d '\n' | xclip -i -sel c
 super + o ; q
 	clip_to_qr
-#super + o ; z
-#	color_to_clip
 super + o ; e
 	emoji_to_clip
 #super + o ; p
@@ -52,5 +48,3 @@ ctrl + alt + Delete
 	pkill Xorg
 super + shift + r
 	pkill -SIGUSR1 sxhkd
-#F{1-3}
-#	xdotool click {1-3}
