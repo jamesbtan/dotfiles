@@ -16,7 +16,7 @@ link_dots() {
 		\( -path ./.git -o -path ./.config \) -prune \
 		-o ! -name "install.sh" -print)"
 	conf="$(find .config -mindepth 1 -maxdepth 1)"
-	printf "%s\n%s" "$home" "$conf" | \
+	printf "%s\n%s\n" "$home" "$conf" | \
 	while read -r file ; do
 		base="${file#./}"
 		link "$(pwd)/$base" "$HOME/$base"

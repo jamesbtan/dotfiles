@@ -17,7 +17,7 @@ super + s
 #super + o ; m
 #	clip_to_mpv
 super + o ; d
-	date +%F | tr -d '\n' | xclip -i -sel c
+	date +%F | tr -d '\n' | xsel -ib
 super + o ; q
 	clip_to_qr
 super + o ; e
@@ -39,9 +39,9 @@ XF86MonBrightnessDown
 XF86MonBrightnessUp
 	xbacklight -inc 5
 XF86AudioRaiseVolume
-	amixer sset 'Master' 5%+
+	amixer sset 'Master' 1%+
 XF86AudioLowerVolume
-	amixer sset 'Master' 5%-
+	amixer sset 'Master' 1%-
 XF86AudioMute
 	amixer sset 'Master' toggle
 ctrl + alt + Delete

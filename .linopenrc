@@ -10,8 +10,12 @@ video:mpv
 ?'^http:\/\/':firefox-nightly
 ?'^https:\/\/':firefox-nightly
 ?'^www.':firefox-nightly
+.html:firefox-nightly
 
-.pdf:mupdf
+.pdf:zathura
+.epub:zathura
 
-directory:echo
+.docx:libreoffice
+
+directory:nnn->interm
 default:echo

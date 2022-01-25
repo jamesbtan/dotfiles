@@ -7,4 +7,4 @@ hook global WinSetOption filetype=sh %{ set-option buffer lintcmd 'shellcheck -f
 map global insert <tab> '<a-;><a-gt>'
 map global insert <s-tab> '<a-;><a-lt>'
 
-colorscheme kakoune-plain
+colorscheme tomorrow-night

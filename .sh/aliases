@@ -1,5 +1,5 @@
 #!/bin/sh
-alias g='kak'
+alias g='vis'
 alias gg='g ~/Documents/todo.txt'
 alias gi='cd ~/Documents/school'
 alias gn='cd ~/Documents/notes'
