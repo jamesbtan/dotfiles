@@ -8,3 +8,16 @@ map global insert <tab> '<a-;><a-gt>'
 map global insert <s-tab> '<a-;><a-lt>'
 
 colorscheme tomorrow-night
+
+# plugins
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "andreyorst/plug.kak" noload
+plug "kak-lsp/kak-lsp" do %{
+    cargo install --locked --force --path .
+}
+
+hook global WinSetOption filetype=(rust) %{
+    lsp-enable-window
+}
+
+map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
