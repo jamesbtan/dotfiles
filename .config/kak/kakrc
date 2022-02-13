@@ -11,13 +11,19 @@ colorscheme tomorrow-night
 
 # plugins
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "https://github.com/dracula/kakoune" theme config %{
+    colorscheme dracula
+}
 plug "andreyorst/plug.kak" noload
+plug "caksoylar/kakoune-focus" config %{
+    map global user <space> ': focus-toggle<ret>' -docstring "toggle selections focus"
+}
 plug "kak-lsp/kak-lsp" do %{
     cargo install --locked --force --path .
 }
 
-hook global WinSetOption filetype=(rust) %{
+hook global WinSetOption filetype=(rust|cpp|c|python|nim) %{
     lsp-enable-window
+    map window normal <C-l> %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
 }
 
-map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"

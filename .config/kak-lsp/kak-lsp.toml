@@ -13,10 +13,10 @@ timeout = 1800 # seconds = 30 minutes
 # command = "bash-language-server"
 # args = ["start"]
 
-# [language.c_cpp]
-# filetypes = ["c", "cpp"]
-# roots = ["compile_commands.json", ".clangd", ".git", ".hg"]
-# command = "clangd"
+[language.c_cpp]
+filetypes = ["c", "cpp"]
+roots = ["compile_commands.json", ".clangd", ".git", ".hg"]
+command = "clangd"
 
 # [language.crystal]
 # filetypes = ["crystal"]
@@ -216,10 +216,10 @@ timeout = 1800 # seconds = 30 minutes
 # See https://github.com/sumneko/vscode-lua/blob/master/setting/schema.json
 # diagnostics.enable = true
 
-# [language.nim]
-# filetypes = ["nim"]
-# roots = ["*.nimble", ".git", ".hg"]
-# command = "nimlsp"
+[language.nim]
+filetypes = ["nim"]
+roots = ["*.nimble", ".git", ".hg"]
+command = "nimlsp"
 
 # [language.nix]
 # filetypes = ["nix"]
@@ -240,14 +240,14 @@ timeout = 1800 # seconds = 30 minutes
 # [language.php.settings]
 # intelephense.storagePath = "/tmp/intelephense"
 
-# [language.python]
-# filetypes = ["python"]
-# roots = ["requirements.txt", "setup.py", ".git", ".hg"]
-# command = "pylsp"
-# settings_section = "_"
-# [language.python.settings._]
+[language.python]
+filetypes = ["python"]
+roots = ["requirements.txt", "setup.py", ".git", ".hg"]
+command = "pylsp"
+settings_section = "_"
+[language.python.settings._]
 # See https://github.com/python-lsp/python-lsp-server#configuration
-# pylsp.configurationSources = ["flake8"]
+pylsp.configurationSources = ["flake8"]
 
 # [language.r]
 # filetypes = ["r"]

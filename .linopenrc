@@ -1,9 +1,10 @@
 # TODO:read/refactor/configure
 
 terminal=st
-interm=vis
 
-text:vis
+text:vis->interm
+.json:vis->interm
+
 image:sxiv
 video:mpv
 
@@ -16,6 +17,8 @@ video:mpv
 .epub:zathura
 
 .docx:libreoffice
+
+.scad:openscad
 
 directory:nnn->interm
 default:echo

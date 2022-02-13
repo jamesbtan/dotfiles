@@ -13,7 +13,7 @@ link() {
 
 link_dots() {
 	home="$(find . -mindepth 1 -maxdepth 1 \
-		\( -path ./.git -o -path ./.config \) -prune \
+		\( -path "./.git*" -o -path ./.config \) -prune \
 		-o ! -name "install.sh" -print)"
 	conf="$(find .config -mindepth 1 -maxdepth 1)"
 	printf "%s\n%s\n" "$home" "$conf" | \

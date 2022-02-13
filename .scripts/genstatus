@@ -1,16 +1,16 @@
 #!/bin/sh
 # maybe refactor?
-# AUDIO="$(amixer get 'Master' | tail -n 1 | sed 's/].*//;s/.*\[//')"
-# BRIGHTNESS="$(printf "%.1f" "$(xbacklight)")"
 if [ $# -eq 0 ]; then
 	BATTERY="$(acpi | cut -d , -f 2 | sed 's/^ *//')"
 	TIME="$(date +"%m-%d %R")"
 	printf " B:%s | T:%s " "$BATTERY" "$TIME"
 else
-	BATTERY="$(acpi | cut -d , -f 2,3 | sed 's/^ *//')"
+	vol="$(pactl get-sink-volume @DEFAULT_SINK@ | tr ' ' '\n' | grep '%' | paste -sd "/")"
+	mut="$(pactl get-sink-mute @DEFAULT_SINK@ | awk '/yes/ {print " [X]"}')"
+	AUDIO="$(printf "%s%s" "$vol" "$mut")"
+	BATTERY="$(acpi | cut -d , -f 2- | sed 's/^ *//')"
+	BRIGHTNESS="$(printf "%.0f%%" "$(xbacklight)")"
 	TIME="$(date)"
-	printf "B:%s\nT:%s\n" "$BATTERY" "$TIME"
-	printf "VPN:\n"
-	nordvpn status | head -n 2 | cut -d ':' -f 2
+	printf "A:%s\nR:%s\nB:%s\nT:%s\n" "$AUDIO" "$BRIGHTNESS" "$BATTERY" "$TIME"
 	cal -3
 fi
