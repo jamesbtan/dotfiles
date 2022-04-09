@@ -1,16 +1,15 @@
 super + w
 	firefox-nightly
-# switch to ungoogled chromium
-#super + shift + w
-#	brave
+super + shift + w
+	firefox-nightly --private-window
 super + semicolon
 	slock
 super + a
 	st
 super + e
 	rofi -show run
-#super + shift + e
-#	9 acme
+super + shift + e
+	emacs
 super + x
 	rofi -show window
 super + s
@@ -36,6 +35,6 @@ XF86MonBrightness{Down,Up}
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 ctrl + alt + Delete
-	pkill Xorg
+	killall Xorg
 super + shift + r
-	pkill -SIGUSR1 sxhkd
+	killall -SIGUSR1 sxhkd

@@ -7,7 +7,7 @@ while : ; do
 		find . -type f \( -name "*.opus" -o -name "*.aac" \) | shuf > "$queue"
 	curr="$(head -n 1 "$queue")"
 	clear
-	echo "$curr"
+	printf "%s\n" "$curr"
 	mpv --really-quiet "$curr"
 	sed -i '1d' "$queue"
 done

@@ -1,6 +1,7 @@
 #!/bin/sh
 alias g='vis'
-alias gg='g ~/Documents/todo.txt'
+alias gt='cd ~/Documents/todo'
+alias gg='g ~/Documents/todo/todo.txt'
 alias gi='cd ~/Documents/school'
 alias gn='cd ~/Documents/notes'
 alias gD='cd ~/Documents'

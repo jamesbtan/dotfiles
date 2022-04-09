@@ -1,16 +1,14 @@
 #!/bin/sh
-# maybe refactor?
-if [ $# -eq 0 ]; then
-	BATTERY="$(acpi | cut -d , -f 2 | sed 's/^ *//')"
-	TIME="$(date +"%m-%d %R")"
-	printf " B:%s | T:%s " "$BATTERY" "$TIME"
+
+BATTERY="$(acpi | cut -d , -f 2 | sed 's/^ *//')"
+TIME="$(date +"%m-%d %R")"
+if [ $# -ge 1 ]; then
+    vol="$(pactl get-sink-volume @DEFAULT_SINK@ | tr ' ' '\n' | grep '%' | head -n 1)"
+    mut="$(pactl get-sink-mute @DEFAULT_SINK@ | awk '/yes/ {print " [X]"}')"
+    AUDIO="$(printf "%s%s" "$vol" "$mut")"
+    BRIGHTNESS="$(printf "%.0f%%" "$(xbacklight)")"
+    printf "A:%s\nR:%s\nB:%s\nT:%s\n" "$AUDIO" "$BRIGHTNESS" "$BATTERY" "$TIME"
+    cal -3
 else
-	vol="$(pactl get-sink-volume @DEFAULT_SINK@ | tr ' ' '\n' | grep '%' | paste -sd "/")"
-	mut="$(pactl get-sink-mute @DEFAULT_SINK@ | awk '/yes/ {print " [X]"}')"
-	AUDIO="$(printf "%s%s" "$vol" "$mut")"
-	BATTERY="$(acpi | cut -d , -f 2- | sed 's/^ *//')"
-	BRIGHTNESS="$(printf "%.0f%%" "$(xbacklight)")"
-	TIME="$(date)"
-	printf "A:%s\nR:%s\nB:%s\nT:%s\n" "$AUDIO" "$BRIGHTNESS" "$BATTERY" "$TIME"
-	cal -3
+    printf " B:%s | T:%s " "$BATTERY" "$TIME"
 fi

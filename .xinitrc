@@ -1,8 +1,13 @@
 #!/bin/sh
-setxkbmap -option ctrl:swapcaps &
+setxkbmap -option ctrl:swapcaps
 sxhkd &
 
-hsetroot -solid "#21222c"
-xcompmgr -c &
+xsetroot -solid "#21222c"
+#xcompmgr -c &
 
-exec sowm
+while : ; do
+	xsetroot -name "$(genstatus)"
+	sleep 30
+done &
+
+exec dwm
