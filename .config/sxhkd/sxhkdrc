@@ -2,6 +2,8 @@ super + w
 	firefox-nightly
 super + shift + w
 	firefox-nightly --private-window
+super + alt + w
+	brave
 super + semicolon
 	slock
 super + a
