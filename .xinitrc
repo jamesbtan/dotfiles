@@ -2,7 +2,7 @@
 setxkbmap -option ctrl:swapcaps
 sxhkd &
 
-xsetroot -solid "#21222c"
+xsetroot -solid white
 #xcompmgr -c &
 
 while : ; do
