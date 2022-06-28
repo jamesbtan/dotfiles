@@ -216,10 +216,10 @@ command = "clangd"
 # See https://github.com/sumneko/vscode-lua/blob/master/setting/schema.json
 # diagnostics.enable = true
 
-[language.nim]
-filetypes = ["nim"]
-roots = ["*.nimble", ".git", ".hg"]
-command = "nimlsp"
+# [language.nim]
+# filetypes = ["nim"]
+# roots = ["*.nimble", ".git", ".hg"]
+# command = "nimlsp"
 
 # [language.nix]
 # filetypes = ["nix"]
@@ -347,10 +347,10 @@ hoverActions.enable = false # kak-lsp doesn't support this at the moment
 # Defaults are at https://github.com/redhat-developer/yaml-language-server/blob/master/src/yamlSettings.ts
 # yaml.format.enable = true
 
-# [language.zig]
-# filetypes = ["zig"]
-# roots = ["build.zig"]
-# command = "zls"
+[language.zig]
+filetypes = ["zig"]
+roots = ["build.zig"]
+command = "zls"
 
 # Semantic tokens support
 # See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens

@@ -5,6 +5,8 @@ terminal=st
 text:vis->interm
 .json:vis->interm
 
+.svg:inkscape
+
 image:sxiv
 video:mpv
 
@@ -21,5 +23,6 @@ video:mpv
 
 .scad:openscad
 
-directory:nnn->interm
+inode/directory:nautilus
+directory:nautilus
 default:echo
