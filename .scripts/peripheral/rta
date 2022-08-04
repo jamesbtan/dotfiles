@@ -1,5 +1,0 @@
-#!/bin/sh
-
-xsetwacom set "UGTABLET 10 inch PenTablet stylus" Area 0 0 32767 29475
-xsetwacom set "UGTABLET 10 inch PenTablet stylus" MapToOutput "eDP1"
-#xsetwacom set "UGTABLET 10 inch PenTablet stylus" Area 0 0 13340 12000

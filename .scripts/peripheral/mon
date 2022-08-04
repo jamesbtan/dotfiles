@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-xrandr --newmode "1280x800_60.00"  83.46  1280 1344 1480 1680  800 801 804 828  -HSync +Vsync
-xrandr --addmode HDMI1 "1280x800_60.00"
-xrandr --output HDMI1 --mode "1280x800_60.00"
-xrandr --output eDP1 --primary --mode 1366x768 --pos 800x0 --rotate normal --output HDMI1 --mode "1280x800_60.00" --pos 0x0 --rotate right --output VIRTUAL1 --off

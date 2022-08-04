@@ -20,16 +20,7 @@ add_rpath() {
 	done
 }
 
-add_rpath "$HOME"/.local/bin
 add_rpath "$HOME"/.scripts
-add_path "$HOME"/bin
-add_path "$HOME"/bin/zig-linux-x86_64-0.10.0-dev.1107+7deadf430
-add_path "$HOME"/bin/j903
-add_path "$HOME/.cabal/bin"
-add_path "$HOME/.ghcup/bin"
+add_path "$HOME"/.local/bin
 add_path "$HOME"/.cargo/bin
-add_path "$HOME"/.nimble/bin
-add_path "$HOME"/.emacs.d/bin
-add_path "$HOME"/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin
-add_path /opt/wine-osu/bin
 export PATH

@@ -1,19 +1,14 @@
 #!/bin/sh
-alias g='vis'
+alias g='kak'
 alias gt='cd ~/Documents/todo'
 alias gg='g ~/Documents/todo/todo.txt'
 alias gi='cd ~/Documents/school'
-alias gn='cd ~/Documents/notes'
 alias gD='cd ~/Documents'
 alias gd='cd ~/Documents/drawing'
 alias gdr='cd ~/Documents/drawing/refs'
+alias gn='cd ~/Documents/notes'
 alias gz='cd ~/Documents/notes/zet'
 
 #alias fd='cd $(find -type d | fzf)'
 
 alias ls='ls -v --color=auto'
-
-# school stuff
-## Useful aliases
-alias cms='ssh -Y jtan@cmslpc-sl7.fnal.gov'
-alias kcms='kinit jtan@FNAL.GOV'
