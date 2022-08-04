@@ -1,0 +1,49 @@
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "height": 34, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["river/tags"],
+    "modules-center": ["clock#1", "clock#2"],
+    "modules-right": ["idle_inhibitor", "backlight", "battery", "pulseaudio"],
+    "clock#1": {
+        "format": "{:%a %m-%d}",
+    },
+    "clock#2": {
+        "format": "{:%H:%M}",
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "🌞",
+            "deactivated": "😎",
+        },
+    },
+    "backlight": {
+        "states": {
+            "low": 20,
+            "mid": 50,
+            "high": 80,
+        },
+        "format": "{percent}% {icon}",
+        "format-icons": ["🌒", "🌓", "🌔", "🌕"],
+    },
+    "battery": {
+        "states": {
+            "critical": 20,
+            "warning": 60,
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["🪫", "⚡", "🔋"],
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "🔇",
+        "format-icons": {
+            "headphone": "🎧",
+            "default": "📢",
+        },
+    },
+}
