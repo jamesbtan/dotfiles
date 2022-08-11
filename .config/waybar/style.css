@@ -35,14 +35,6 @@ tooltip label {
     border: none;
 }
 
-#clock.1 {
-    padding-right: 8px;
-}
-
-#clock.2 {
-    padding-left: 8px;
-}
-
 #tags button * {
     background-color: inherit;
 }
@@ -64,4 +56,16 @@ tooltip label {
 }
 #tags button.focused:hover {
     background-color: #6da7aa;
+}
+
+#clock.1 {
+    padding-right: 8px;
+}
+
+#clock.2 {
+    padding-left: 8px;
+}
+
+#battery.charging {
+    background-color: #5b5b5b;
 }

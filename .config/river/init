@@ -1,6 +1,6 @@
 #!/bin/sh
 
-locker="waylock --init-color '#000000' --input-color '#126348' --fail-color '#b53126'"
+locker="waylock --init-color 0x000000 --input-color 0x126348 --fail-color 0xb53126"
 
 #key binds
 ##launch
@@ -13,18 +13,18 @@ riverctl map normal Super M spawn 'rofimoji'
 
 ##media
 ###audio
-riverctl map normal None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-riverctl map normal None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-riverctl map normal None XF86AudioMute         spawn 'pamixer --toggle-mute'
+riverctl map normal None XF86AudioRaiseVolume spawn 'pamixer -i 5'
+riverctl map normal None XF86AudioLowerVolume spawn 'pamixer -d 5'
+riverctl map normal None XF86AudioMute spawn 'pamixer --toggle-mute'
 
 ###mpris media
 riverctl map normal None XF86AudioMedia spawn 'playerctl play-pause'
-riverctl map normal None XF86AudioPlay  spawn 'playerctl play-pause'
-riverctl map normal None XF86AudioPrev  spawn 'playerctl previous'
-riverctl map normal None XF86AudioNext  spawn 'playerctl next'
+riverctl map normal None XF86AudioPlay spawn 'playerctl play-pause'
+riverctl map normal None XF86AudioPrev spawn 'playerctl previous'
+riverctl map normal None XF86AudioNext spawn 'playerctl next'
 
 ###brightness
-riverctl map normal None XF86MonBrightnessUp   spawn 'brightnessctl set 5%+'
+riverctl map normal None XF86MonBrightnessUp spawn 'brightnessctl set 5%+'
 riverctl map normal None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
 
 ###background
@@ -112,27 +112,26 @@ riverctl map normal Super Space toggle-float
 riverctl map normal Super F toggle-fullscreen
 
 # Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
+riverctl map normal Super Up send-layout-cmd rivertile "main-location top"
 riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
+riverctl map normal Super Down send-layout-cmd rivertile "main-location bottom"
+riverctl map normal Super Left send-layout-cmd rivertile "main-location left"
 
 #inputs
 riverctl set-repeat 50 300
 riverctl input pointer-1739-52759-SYNA32A9:00_06CB:CE17_Touchpad tap enabled
+riverctl map-switch normal lid close spawn "systemctl suspend"
 
 #startup
-##tiling
-riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6
 
 ##status
 riverctl spawn waybar
 
 ##idle
-riverctl spawn \
-    swayidle -w \
-        timeout 300 "$locker" \
-        timeout 600 'wlopm --off "*"' \
-        resume 'wlopm --on  "*"' \
-        before-sleep "$locker"
+#
+idlecmd="$(printf "swayidle timeout 300 'wlopm --off \*' resume 'wlopm --on \*' timeout 600 'systemctl suspend' before-sleep '%s'" "$locker")"
+riverctl spawn "$idlecmd"
+
+##tiling
+riverctl default-layout rivertile
+rivertile -view-padding 6 -outer-padding 6

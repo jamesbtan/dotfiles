@@ -23,17 +23,17 @@
     },
     "backlight": {
         "states": {
-            "low": 20,
-            "mid": 50,
             "high": 80,
+            "mid": 50,
+            "low": 20,
         },
         "format": "{percent}% {icon}",
         "format-icons": ["🌒", "🌓", "🌔", "🌕"],
     },
     "battery": {
         "states": {
-            "critical": 20,
             "warning": 60,
+            "critical": 20,
         },
         "format": "{capacity}% {icon}",
         "format-icons": ["🪫", "⚡", "🔋"],
