@@ -23,7 +23,8 @@ add_rpath() {
 add_rpath "$HOME"/.local/bin
 add_rpath "$HOME"/.scripts
 add_path "$HOME"/bin
-add_path "$HOME"/bin/zig-linux-x86_64-0.10.0-dev.1107+7deadf430
+#add_path "$HOME"/bin/zig-0.10.0-dev.2880+6f0807f50/
+#add_path "$HOME"/bin/zls/bin/
 add_path "$HOME"/bin/j903
 add_path "$HOME/.cabal/bin"
 add_path "$HOME/.ghcup/bin"

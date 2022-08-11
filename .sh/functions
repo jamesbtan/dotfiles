@@ -31,15 +31,3 @@ n()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
-
-cmsmnt()
-{
-    sshfs jtan@cmslpc-sl7.fnal.gov:/uscms/homes/j/jtan ~/mnt/lpc
-    sshfs jtan@cmslpc-sl7.fnal.gov:/uscms_data/d3/jtan ~/mnt/nobackup
-}
-
-cmsumnt()
-{
-    fusermount -u ~/mnt/lpc
-    fusermount -u ~/mnt/nobackup
-}

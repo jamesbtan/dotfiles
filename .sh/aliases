@@ -12,8 +12,3 @@ alias gz='cd ~/Documents/notes/zet'
 #alias fd='cd $(find -type d | fzf)'
 
 alias ls='ls -v --color=auto'
-
-# school stuff
-## Useful aliases
-alias cms='ssh -Y jtan@cmslpc-sl7.fnal.gov'
-alias kcms='kinit jtan@FNAL.GOV'

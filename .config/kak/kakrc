@@ -20,14 +20,11 @@ plug 'delapouite/kakoune-buffers' %{
     map global user B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
 }
 
-plug "kak-lsp/kak-lsp" do %{
-    cargo install --locked --force --path .
-} config %{
+plug "kak-lsp" load-path "/usr/share/kak-lsp/rc/" config %{
     lsp-inlay-diagnostics-enable global
-}
 
-hook global WinSetOption filetype=(rust|cpp|c|python|nim|zig) %{
-    lsp-enable-window
-    map window normal <C-l> %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+    hook global WinSetOption filetype=(rust|cpp|c|zig) %{
+        lsp-enable-window
+        map window user d %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+    }
 }
-
