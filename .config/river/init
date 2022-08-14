@@ -5,6 +5,7 @@ locker="waylock --init-color 0x000000 --input-color 0x126348 --fail-color 0xb531
 #key binds
 ##launch
 riverctl map normal Super A spawn foot
+riverctl map normal Super+Shift A spawn emacs
 riverctl map normal Super W spawn firefox
 riverctl map normal Super Semicolon spawn "$locker"
 riverctl map normal Super E spawn 'wofi -S run'
