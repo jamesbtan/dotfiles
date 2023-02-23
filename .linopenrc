@@ -1,1 +1,13 @@
+.pdf: zathura
+.html: firefox
+image: imv
+.csv: kak->interm
+text: kak->interm
 
+?'^http:\/\/':firefox
+?'^https:\/\/':firefox
+?'^www.':firefox
+
+.docx: libreoffice
+
+default: echo

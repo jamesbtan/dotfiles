@@ -35,3 +35,11 @@ function n --wraps nnn --description 'support nnn quit and change directory'
         rm $NNN_TMPFILE
     end
 end
+
+alias g="kak"
+alias gc="when e"
+alias gg="g ~/Documents/todo.txt"
+alias gs="g ~/Documents/scratch.txt"
+alias gn="cd ~/Documents/notes"
+alias whent="when --past=0 --future=0"
+alias whenm="when --past=1 --future=1"

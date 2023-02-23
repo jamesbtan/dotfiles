@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["river/tags"],
     "modules-center": ["clock#1", "clock#2"],
-    "modules-right": ["idle_inhibitor", "backlight", "battery", "pulseaudio"],
+    "modules-right": ["custom/media", "idle_inhibitor", "backlight", "battery", "pulseaudio"],
     "clock#1": {
         "format": "{:%a %m-%d}",
     },
@@ -45,5 +45,12 @@
             "headphone": "🎧",
             "default": "📢",
         },
+    },
+    "custom/media": {
+        "format": "{}",
+        "return-type": "json",
+        "max-length":20,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl play-pause",
     },
 }

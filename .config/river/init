@@ -1,12 +1,13 @@
 #!/bin/sh
 
-locker="waylock --init-color 0x000000 --input-color 0x126348 --fail-color 0xb53126"
+locker="waylock -init-color 0x000000 -input-color 0x126348 -fail-color 0xb53126"
 
 #key binds
 ##launch
 riverctl map normal Super A spawn foot
 riverctl map normal Super+Shift A spawn emacs
 riverctl map normal Super W spawn firefox
+riverctl map normal Super+Shift W spawn firefox --private-window
 riverctl map normal Super Semicolon spawn "$locker"
 riverctl map normal Super E spawn 'wofi -S run'
 riverctl map normal Super+Shift E spawn 'wofi -S drun'
@@ -28,10 +29,13 @@ riverctl map normal None XF86AudioNext spawn 'playerctl next'
 riverctl map normal None XF86MonBrightnessUp spawn 'brightnessctl set 5%+'
 riverctl map normal None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
 
-###background
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+###screenshot
+riverctl map normal Super O spawn 'grim "$HOME"/Pictures/screenshot/$(date +%F-%H%M%S%N).png'
+riverctl map normal Super+Shift O spawn 'slurp | grim -g - "$HOME"/Pictures/screenshot/$(date +%F-%H%M%S%N).png'
+
+###notifications
+riverctl map normal Super Escape spawn 'dunstctl close'
+riverctl map normal Super+Shift Escape spawn 'dunstctl close-all'
 
 ##river control
 riverctl map normal Super Q close
@@ -118,18 +122,23 @@ riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
 riverctl map normal Super Down send-layout-cmd rivertile "main-location bottom"
 riverctl map normal Super Left send-layout-cmd rivertile "main-location left"
 
+###background
+riverctl background-color 0x002b36
+riverctl border-color-focused 0x93a1a1
+riverctl border-color-unfocused 0x586e75
+
 #inputs
 riverctl set-repeat 50 300
 riverctl input pointer-1739-52759-SYNA32A9:00_06CB:CE17_Touchpad tap enabled
 riverctl map-switch normal lid close spawn "systemctl suspend"
 
-#startup
+##notifications
+riverctl spawn dunst
 
 ##status
 riverctl spawn waybar
 
 ##idle
-#
 idlecmd="$(printf "swayidle timeout 300 'wlopm --off \*' resume 'wlopm --on \*' timeout 600 'systemctl suspend' before-sleep '%s'" "$locker")"
 riverctl spawn "$idlecmd"
 

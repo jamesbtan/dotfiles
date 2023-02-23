@@ -179,11 +179,11 @@ command = "clangd"
 # Other options, see https://github.com/julia-vscode/LanguageServer.jl/blob/master/src/requests/workspace.jl
 # "julia.lint.run" = "true"
 
-# [language.latex]
-# filetypes = ["latex"]
-# roots = [".git", ".hg"]
-# command = "texlab"
-# settings_section = "texlab"
+[language.latex]
+filetypes = ["latex"]
+roots = [".git", ".hg"]
+command = "texlab"
+settings_section = "texlab"
 # [language.latex.settings.texlab]
 # See https://github.com/latex-lsp/texlab/blob/master/docs/options.md
 #

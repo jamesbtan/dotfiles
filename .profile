@@ -1,16 +1,18 @@
 #!/bin/sh
 export EDITOR='kak'
 export XDG_CONFIG_HOME="$HOME"/.config
+export XKB_DEFAULT_LAYOUT='us,us(intl)'
+export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle'
 
 add_path() {
 	! [ -d "$1" ] && return
 	case ":${PATH}:" in
-	    *:"$1":*)
-	        ;;
-	    *)
-	        # Prepending path in case a system-installed rustc needs to be overridden
-	        export PATH="$1:$PATH"
-	        ;;
+		*:"$1":*)
+			;;
+		*)
+			# Prepending path in case a system-installed rustc needs to be overridden
+			export PATH="$1:$PATH"
+			;;
 	esac
 }
 
