@@ -28,7 +28,7 @@ function n --wraps nnn --description 'support nnn quit and change directory'
 
     # The command function allows one to alias this function to `nnn` without
     # making an infinitely recursive alias
-    command nnn $argv
+    command nnn -A $argv
 
     if test -e $NNN_TMPFILE
         source $NNN_TMPFILE
@@ -38,8 +38,13 @@ end
 
 alias g="kak"
 alias gc="when e"
-alias gg="g ~/Documents/todo.txt"
+alias gt="cd ~/Documents/todo/"
+alias gg="g ~/Documents/todo/todo.txt"
+alias gb="g ~/Documents/todo/backlog.txt"
 alias gs="g ~/Documents/scratch.txt"
 alias gn="cd ~/Documents/notes"
 alias whent="when --past=0 --future=0"
 alias whenm="when --past=1 --future=1"
+
+# opam configuration
+source /home/james/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true

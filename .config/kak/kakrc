@@ -3,9 +3,22 @@ set-option global disabled_hooks '' #'.*-indent' '.*-highlight' '.*-indent|.*-hi
 set-option global ui_options terminal_assistant=off terminal_set_title=false
 set-option global autoreload true
 
+define-command -params .. floating-terminal %{
+    set-option window termcmd "foot -a 'foot.floating' sh -c"
+    terminal %arg{@}
+    set-option window termcmd "foot sh -c"
+}
+
+map -docstring "xml tag objet" global object t %{c<lt>([\w.]+)\b[^>]*?(?<lt>!/)>,<lt>/([\w.]+)\b[^>]*?(?<lt>!/)><ret>}
+
 map global user n ?<ret>
 map global user p <a-?><ret>
 map global user o 'y:edit ~/Documents/notes/<c-r>".md<ret>' -docstring 'open notes file'
+map global user f %{
+    :floating-terminal nnn-pick . %val{client} %val{session}
+}
+
+map global normal = %{_|xargs -I@ fish -Nc "builtin math '@'"<ret>} -docstring 'eval math'
 
 map global insert <tab> '<a-;><a-gt>'
 map global insert <s-tab> '<a-;><a-lt>'
@@ -16,6 +29,14 @@ map global prompt <c-[> '<esc>'
 
 colorscheme tomorrow-night
 
+# lang specific
+hook global WinSetOption filetype=c %{
+    set buffer indentwidth 0
+}
+hook global WinSetOption filetype=(javascript|css) %{
+    set buffer indentwidth 2
+}
+
 # plugins
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug 'andreyorst/plug.kak' noload %{
@@ -25,19 +46,19 @@ plug 'delapouite/kakoune-buffers' %{
     map global user b %{: enter-buffers-mode<ret>} -docstring 'buffers'
     map global user B %{: enter-user-mode -lock buffers<ret>} -docstring 'buffers %(lock)'
 }
-plug 'occivink/kakoune-phantom-selection' %{
-    map global user f     ": phantom-selection-add-selection<ret>"
-    map global user F     ": phantom-selection-select-all; phantom-selection-clear<ret>"
-    map global user <a-f> ": phantom-selection-iterate-next<ret>"
-    map global user <a-F> ": phantom-selection-iterate-prev<ret>"
-
-    map global insert <a-f> "<esc>: phantom-selection-iterate-next<ret>i"
-    map global insert <a-F> "<esc>: phantom-selection-iterate-prev<ret>i"
-}
 plug 'kak-lsp' load-path '/usr/share/kak-lsp/rc' %{
     lsp-inlay-diagnostics-enable global
     hook global WinSetOption filetype=(rust|cpp|c|zig|latex) %{
         lsp-enable-window
         map window user d %{: enter-user-mode lsp<ret>} -docstring 'LSP mode'
+    }
+}
+plug 'JJK96/kakoune-repl-send' %{
+    # Suggested mapping
+    map global normal <backspace> ': repl-send<ret>'
+    map global normal <s-backspace> ': repl-send-stop<ret>'
+    hook global WinSetOption filetype=python %{
+        set window repl_send_command "python -i"
+        set window repl_send_exit_command "exit()"
     }
 }

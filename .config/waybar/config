@@ -5,7 +5,8 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["river/tags"],
+    //"modules-left": ["river/tags"],
+    "modules-left": ["sway/workspaces"],
     "modules-center": ["clock#1", "clock#2"],
     "modules-right": ["custom/media", "idle_inhibitor", "backlight", "battery", "pulseaudio"],
     "clock#1": {

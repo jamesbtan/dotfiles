@@ -2,12 +2,14 @@
 .html: firefox
 image: imv
 .csv: kak->interm
+.exe: wine
+.eXe: wine
 text: kak->interm
 
 ?'^http:\/\/':firefox
 ?'^https:\/\/':firefox
 ?'^www.':firefox
-
 .docx: libreoffice
 
+directory: nnn->interm
 default: echo

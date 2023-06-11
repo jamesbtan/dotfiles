@@ -2,4 +2,4 @@
 .config/kak/plugins
 .config/kak/colors
 .emacs.d/*
-!.emacs.d/*.el
+!.emacs.d/*.org

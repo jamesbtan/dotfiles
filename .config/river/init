@@ -129,6 +129,7 @@ riverctl border-color-unfocused 0x586e75
 
 #inputs
 riverctl set-repeat 50 300
+riverctl input pointer-1739-52759-SYNA32A9:00_06CB:CE17_Touchpad disable-while-typing disabled
 riverctl input pointer-1739-52759-SYNA32A9:00_06CB:CE17_Touchpad tap enabled
 riverctl map-switch normal lid close spawn "systemctl suspend"
 

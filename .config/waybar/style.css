@@ -20,13 +20,15 @@ tooltip label {
 }
 
 #tags button,
+#workspaces button,
 #clock.1,
 #clock.2,
 #idle_inhibitor,
 #backlight,
 #battery,
 #pulseaudio,
-#custom-media
+#custom-media,
+#network
 {
     background-color: #3b3b3b;
     color: #ffffff;
@@ -36,7 +38,9 @@ tooltip label {
     border: none;
 }
 
-#tags button * {
+#tags button *,
+#workspaces button *
+{
     background-color: inherit;
 }
 
@@ -45,18 +49,26 @@ tooltip label {
     background-color: #5b5b5b;
 }
 
-#tags button.urgent {
+#tags button.urgent,
+#workspaces button.urgent
+{
     background-color: #aaaaaa;
 }
 
-#tags button.focused {
+#tags button.focused,
+#workspaces button.focused
+{
     background-color: #4990a0;
 }
 
-#tags button:hover {
+#tags button:hover,
+#workspaces button:hover
+{
     background-color: #777777;
 }
-#tags button.focused:hover {
+#tags button.focused:hover,
+#workspaces button.focused:hover
+{
     background-color: #6da7aa;
 }
 
