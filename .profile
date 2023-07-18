@@ -1,7 +1,8 @@
 #!/bin/sh
-export EDITOR='kak'
+export EDITOR='vis'
 export XKB_DEFAULT_LAYOUT='us,us(intl)'
 export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle'
+export ANKI_WAYLAND=1
 
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_DATA_HOME="$HOME"/.local/share

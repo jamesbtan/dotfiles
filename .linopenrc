@@ -6,6 +6,8 @@ image: imv
 .eXe: wine
 text: kak->interm
 
+video: mpv
+
 ?'^http:\/\/':firefox
 ?'^https:\/\/':firefox
 ?'^www.':firefox

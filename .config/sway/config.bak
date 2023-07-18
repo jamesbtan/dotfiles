@@ -1,0 +1,188 @@
+#variables
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term foot
+set $menu wofi -S run | xargs swaymsg exec --
+
+#outputs
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+#inputs
+input "1739:52759:SYNA32A9:00_06CB:CE17_Touchpad" {
+    tap enabled
+    dwt disabled
+    middle_emulation enabled
+}
+
+#idle
+exec swayidle -w \
+    timeout 120 'swaylock -f -c 000000' \
+    timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    timeout 600 'systemctl suspend' \
+    before-sleep 'swaylock -f -c 000000'
+
+#key binds
+##launch
+    bindsym $mod+a exec $term
+    bindsym $mod+Shift+e exec emacs
+    bindsym $mod+e exec $menu
+    bindsym $mod+Semicolon exec swaylock -f -c 000000
+    bindsym $mod+w exec firefox
+    bindsym $mod+Shift+w exec firefox --private-window
+    bindsym $mod+Shift+m exec rofimoji
+    bindsym $mod+Shift+q kill
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+    # Exit sway (logs you out of your Wayland session)
+    bindsym Mod1+Control+Delete exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+##media
+###audio
+    bindsym --locked XF86AudioRaiseVolume exec 'pamixer -i 5'
+    bindsym --locked XF86AudioLowerVolume exec 'pamixer -d 5'
+    bindsym --locked XF86AudioMute exec 'pamixer --toggle-mute'
+
+###mpris media
+    bindsym --locked XF86AudioMedia exec 'playerctl play-pause'
+    bindsym --locked XF86AudioPlay exec 'playerctl play-pause'
+    bindsym --locked XF86AudioPrev exec 'playerctl previous'
+    bindsym --locked XF86AudioNext exec 'playerctl next'
+
+###brightness
+    bindsym --locked XF86MonBrightnessUp exec 'brightnessctl set 5%+'
+    bindsym --locked XF86MonBrightnessDown exec 'brightnessctl set 5%-'
+
+###screenshot
+    bindsym $mod+o exec 'grim "$HOME"/Pictures/screenshot/$(date +%F-%H%M%S%N).png'
+    bindsym $mod+Shift+o exec 'slurp | grim -g - "$HOME"/Pictures/screenshot/$(date +%F-%H%M%S%N).png'
+    bindsym $mod+Control+o exec 'grim - | wl-copy --type image/png'
+    bindsym $mod+Control+Shift+o exec 'slurp | grim -g - - | wl-copy --type image/png'
+
+###notifications
+    bindsym $mod+Escape exec 'dunstctl close'
+    bindsym $mod+Shift+Escape exec 'dunstctl close-all'
+
+##move
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+##workspaces
+    bindsym $mod+Tab workspace back_and_forth
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+
+##layout
+    bindsym $mod+Control+$right splith
+    bindsym $mod+Control+$down splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+Shift+s layout stacking
+    bindsym $mod+t layout tabbed
+    bindsym $mod+s layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+f sticky toggle
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+Shift+a focus parent
+
+##scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+minus scratchpad show
+
+##resize
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 50px
+    bindsym $down resize grow height 50px
+    bindsym $up resize shrink height 50px
+    bindsym $right resize grow width 50px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 50px
+    bindsym Down resize grow height 50px
+    bindsym Up resize shrink height 50px
+    bindsym Right resize grow width 50px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#status
+bar {
+    swaybar_command waybar
+}
+
+#visual
+default_border pixel
+default_floating_border pixel
+for_window [app_id="foot\.floating"] floating enable
+
+#misc
+xwayland enable
+
+include /etc/sway/config.d/*

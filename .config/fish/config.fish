@@ -36,11 +36,10 @@ function n --wraps nnn --description 'support nnn quit and change directory'
     end
 end
 
-alias g="kak"
+alias e="emacsclient --create-frame --no-wait"
+alias g="vis"
 alias gc="when e"
-alias gt="cd ~/Documents/todo/"
-alias gg="g ~/Documents/todo/todo.txt"
-alias gb="g ~/Documents/todo/backlog.txt"
+alias gg="g ~/Documents/todo.txt"
 alias gs="g ~/Documents/scratch.txt"
 alias gn="cd ~/Documents/notes"
 alias whent="when --past=0 --future=0"
