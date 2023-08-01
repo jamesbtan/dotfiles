@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if ! [ -d "$1" ]; then
+	echo "not a directory"
+	exit 1
+fi
+
+head="$HOME/Documents/archive"
+body=$(realpath "$1" | sed "s,^$HOME/,,;s,/,_,g")
+file=$(printf "%s/%s_%s.tar.zstd\n" "$head" "$body" "$(date +%Y-%m-%d)")
+
+tar c --zstd -vhf "$file" "$1"

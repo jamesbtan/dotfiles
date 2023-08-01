@@ -1,5 +1,6 @@
 .pdf: zathura
 .html: firefox
+.htm: firefox
 image: imv
 .csv: kak->interm
 .exe: wine

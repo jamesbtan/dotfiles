@@ -13,6 +13,7 @@ input "1739:52759:SYNA32A9:00_06CB:CE17_Touchpad" {
     dwt disabled
     middle_emulation enabled
 }
+exec --no-startup-id fcitx -d
 
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
