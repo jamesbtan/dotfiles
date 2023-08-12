@@ -1,5 +1,5 @@
 #!/bin/sh
-export EDITOR='vis'
+export EDITOR='kak'
 export XKB_DEFAULT_LAYOUT='us,us(intl)'
 export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle'
 export ANKI_WAYLAND=1

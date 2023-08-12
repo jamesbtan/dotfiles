@@ -13,7 +13,8 @@ input "1739:52759:SYNA32A9:00_06CB:CE17_Touchpad" {
     dwt disabled
     middle_emulation enabled
 }
-exec --no-startup-id fcitx -d
+#exec --no-startup-id fcitx -d
+exec foot -a "foot.scratchpad" sh -c "while : ; do fish; swaymsg scratchpad show; clear; done"
 
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
@@ -28,14 +29,17 @@ bindsym $mod+Shift+e exec emacsclient -c
 bindsym $mod+z exec logseq
 bindsym $mod+e exec $menu
 bindsym $mod+Semicolon exec swaylock -f -c 000000
-bindsym $mod+w exec firefox
-bindsym $mod+Shift+w exec firefox --private-window
+bindsym $mod+w exec firefox-developer-edition
+bindsym $mod+Shift+w exec firefox-developer-edition --private-window
 bindsym $mod+Shift+m exec rofimoji
 bindsym $mod+Shift+q kill
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 # Exit sway (logs you out of your Wayland session)
 bindsym Mod1+Control+Delete exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $mod+p exec wtype ꝡ
+bindsym $mod+Shift+p exec wtype Ꝡ
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -125,6 +129,7 @@ bindsym $mod+Shift+f sticky toggle
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+c move position center
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
@@ -165,6 +170,7 @@ bar {
 default_border pixel
 default_floating_border pixel
 for_window [app_id="foot\.floating"] floating enable
+for_window [app_id="foot\.scratchpad"] move scratchpad
 
 xwayland enable
 

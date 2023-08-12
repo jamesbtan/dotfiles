@@ -1,0 +1,5 @@
+#!/bin/sh
+
+printf "execute-keys -client '%s' 'i%s'" \
+    "$1" "$(,nt a | tr '\n' ' ' | sed 's/ $//')" \
+| kak -p "$2"

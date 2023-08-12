@@ -37,14 +37,9 @@ function n --wraps nnn --description 'support nnn quit and change directory'
 end
 
 alias e="emacsclient --create-frame --no-wait"
-alias g="vis"
-alias gc="when e"
+alias g="kak"
+alias gf="g (fzf)"
 alias gg="g ~/Documents/todo.txt"
 alias gt="cd ~/Documents/todo"
 alias gs="g ~/Documents/scratch.txt"
 alias gn="cd ~/Documents/notes"
-alias whent="when --past=0 --future=0"
-alias whenm="when --past=1 --future=1"
-
-# opam configuration
-source /home/james/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true

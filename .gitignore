@@ -1,5 +1,4 @@
 *~
-.config/kak/plugins
-.config/kak/colors
+.config/kak/bundle
 .emacs.d/*
 !.emacs.d/*.org

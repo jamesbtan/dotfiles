@@ -1,8 +1,0 @@
-#!/bin/sh
-
-nnn -A -p ~/.local/share/nnn "$1"
-
-xargs -I @ \
-    printf "evaluate-commands -client %s 'edit %s'\n" "$2" @ \
-    <~/.local/share/nnn \
-| kak -p "$3"

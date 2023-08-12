@@ -1,0 +1,19 @@
+colorscheme tomorrow-night
+
+hook global ModuleLoaded sway|wayland %{
+    set-option global termcmd 'foot -a "foot.floating" sh -c'
+}
+
+map global insert <tab> '<a-;><a-gt>'
+map global insert <s-tab> '<a-;><a-lt>'
+
+map global insert <c-d> '[<esc>!date +%F<ret>;c]'
+map global insert <c-D> '[<esc>!date +%F<ret>;c]'
+
+map global insert <c-t> '<esc>:terminal .x/t %val{client} %val{session}<ret>'
+
+hook global WinSetOption filetype=sh %{
+    set-option buffer lintcmd 'shellcheck -f gcc'
+}
+
+source "%val{config}/plugins.kak"

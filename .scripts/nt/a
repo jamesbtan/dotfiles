@@ -1,0 +1,3 @@
+#!/bin/sh
+
+,nt l | fzf -m

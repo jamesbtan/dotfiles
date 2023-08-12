@@ -1,6 +1,6 @@
 .pdf: zathura
-.html: firefox
-.htm: firefox
+.html: firefox-developer-edition
+.htm: firefox-developer-edition
 image: imv
 .csv: kak->interm
 .exe: wine
@@ -9,9 +9,9 @@ text: kak->interm
 
 video: mpv
 
-?'^http:\/\/':firefox
-?'^https:\/\/':firefox
-?'^www.':firefox
+?'^http:\/\/':firefox-developer-edition
+?'^https:\/\/':firefox-developer-edition
+?'^www.':firefox-developer-edition
 .docx: libreoffice
 
 directory: nnn->interm

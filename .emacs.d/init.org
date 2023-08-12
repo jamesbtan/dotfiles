@@ -6,7 +6,26 @@
 :properties:
 :header-args: :tangle yes
 :end:
+** Helper funcs
+#+begin_src elisp
+  (defun get-string-from-file (filePath)
+    "Return file content as string."
+    (with-temp-buffer
+      (insert-file-contents filePath)
+      (substring (buffer-string) 0 -1)))
+
+  (defun my/ekg-capture-url ()
+    (interactive)
+
+    (ekg-capture-url
+     (get-string-from-file "~/bin/TabFS/fs/mnt/tabs/last-focused/url.txt")
+     (get-string-from-file "~/bin/TabFS/fs/mnt/tabs/last-focused/title.txt")))
+#+end_src
 ** Appearance
+*** Initial
+#+begin_src elisp
+  (defun my/visual-setup ()
+#+end_src
 *** Theme
 #+begin_src elisp
   (load-theme 'modus-vivendi t)
@@ -29,6 +48,15 @@
 (fset 'yes-or-no-p #'y-or-n-p)
 
 (set-frame-font "monospace 12")
+#+end_src
+*** Final
+#+begin_src elisp
+  )
+  (add-hook 'after-make-frame-functions
+            (lambda (f)
+              (select-frame f)
+              (my/visual-setup)))
+  (my/visual-setup)
 #+end_src
 ** Packages
 *** MELPA
@@ -301,7 +329,8 @@
     (savehist-mode))
 #+end_src
 **** TODO corfu
-*** org-mode
+*** Note taking
+**** org-mode
 #+begin_src elisp
 (use-package org
   :ensure t
@@ -326,7 +355,7 @@
   (org-load-modules-maybe t)
   (require 'org))
 #+end_src
-**** elfeed-org
+***** elfeed-org
 #+begin_src elisp
   (use-package elfeed-org
     :ensure t
@@ -334,10 +363,17 @@
     (require 'elfeed-org)
     (elfeed-org))
 #+end_src
-**** TODO org-contacts
-**** TODO org-capture
-***** Tickler file
-***** Journal/daily entry
+***** TODO org-contacts
+***** TODO org-capture
+****** Tickler file
+****** Journal/daily entry
+***** TODO org-roam
+**** ekg
+#+begin_src elisp
+  (use-package ekg
+    :bind (([f11] . ekg-capture)
+           ([S-f11] . my/ekg-capture-url)))
+  #+end_src
 *** darkroom
 #+begin_src elisp
   (use-package darkroom

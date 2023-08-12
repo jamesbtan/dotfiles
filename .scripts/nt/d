@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p daily
+$EDITOR daily/"$(date +%F)".md
