@@ -1,0 +1,50 @@
+super + a
+    st
+super + w
+    firefox-developer-edition
+super + shift + w
+    firefox-developer-edition --private-window
+super + e
+    rofi -show run
+super + shift + e
+    rofi -show drun
+super + alt + w
+    rofi -show window
+super + semicolon
+    slock
+super + z
+    obsidian
+super + shift + z
+    logseq
+super + shift + z
+    emacsclient -c
+control + alt + Delete
+    pkill Xorg
+
+super + o
+    maim "$HOME"/Pictures/screenshot/$(date +%F-%H%M%S%N).png
+super + shift + o
+    maim --select "$HOME"/Pictures/screenshot/$(date +%F-%H%M%S%N).png
+super + control + o
+    maim | xclip -sel c -i -t image/png
+super + control + shift + o
+    maim --select | xclip -sel c -i -t image/png
+
+super + shift + c
+    control-next.sh
+super + alt + c
+    pkill antimicrox; plover_send_command quit
+
+super + p
+    sleep .1; xdotool type "$(date +%F)"
+
+XF86Audio{Raise,Lower}Volume
+    pamixer -{i,d} 5
+XF86AudioMute
+    pamixer --toggle-mute
+XF86Audio{Media,Play,Prev,Next}
+    playerctl {play-pause,play-pause,previous,next}
+XF86MonBrightness{Up,Down}
+    brightnessctl set 5%{+,-}
+#alt+XF86Audio{Raise,Lower}Volume
+#    brightnessctl set 5%{+,-}
