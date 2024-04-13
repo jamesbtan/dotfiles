@@ -38,7 +38,7 @@ end
 
 alias e="emacsclient --create-frame --no-wait"
 alias clc="calcurse"
-alias g="kak"
+alias g="nvim"
 alias gf="g (fzf)"
 alias gg="g ~/Documents/todo/todo.txt"
 alias gl="g ~/Documents/todo/log.txt"
