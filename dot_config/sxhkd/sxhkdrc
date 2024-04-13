@@ -1,15 +1,15 @@
 super + a
-    st
+    alacritty
 super + w
     firefox-developer-edition
 super + shift + w
     firefox-developer-edition --private-window
+super + alt + w
+    brave
 super + e
     rofi -show run
 super + shift + e
     rofi -show drun
-super + alt + w
-    rofi -show window
 super + semicolon
     slock
 super + z

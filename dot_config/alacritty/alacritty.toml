@@ -1,0 +1,7 @@
+[font]
+size = 7
+
+[keyboard]
+bindings = [
+{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+]

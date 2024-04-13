@@ -1,0 +1,26 @@
+#!/bin/sh
+
+enable-tap
+xset b off
+xrdb -merge ~/.Xresources
+xsetroot -cursor_name arrow
+setxkbmap -layout 'us,es' -option 'grp:ctrls_toggle'
+# echo "0" > ~/.scripts/control-mode.dat
+# control-run.sh 0
+
+dunst &
+sxhkd &
+
+#exec sowm
+#exec evilwm --fn fixed --mask1 'mod4' --mask2 'mod4' --term st
+
+while : ; do
+    xsetroot -name "$({
+        echo "A:$(pamixer --get-volume-human)"
+        echo "B:$(acpi -b | cut -f 2 -d ',' | sed 's/^ //')"
+        date +'%a %F %R'
+    } | paste -sd '|' | sed 's/|/ & /g')"
+    sleep 1
+done &
+
+exec dwm

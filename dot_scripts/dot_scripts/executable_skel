@@ -1,0 +1,5 @@
+#!/bin/sh
+template=$*
+file=$HOME/.config/skel/"$template"
+[ -f "$file" ] || exit 1
+cat "$file"

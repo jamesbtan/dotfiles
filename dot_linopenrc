@@ -1,0 +1,28 @@
+# ?'.*youtube\.com.*': mpv
+# ?'.*youtu\.be.*': mpv
+video: mpv
+audio: mpv
+
+?'^http:\/\/': firefox-developer-edition
+?'^https:\/\/': firefox-developer-edition
+?'^www.': firefox-developer-edition
+.html: firefox-developer-edition
+.htm: firefox-developer-edition
+
+.pdf: zathura
+.epub: zathura
+image: imv
+.exe: wine
+.eXe: wine
+.csv: kak->interm
+text: kak->interm
+
+.docx: libreoffice
+.xlsx: libreoffice
+
+?'^logseq:': logseq
+
+.apkg: anki
+
+directory: nnn->interm
+default: echo
