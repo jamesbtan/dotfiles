@@ -1,20 +1,15 @@
+-- {{{1 Options
 vim.cmd("colorscheme slate")
-
--- Options {{{1
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.foldmethod = 'marker'
-
--- Keybinds {{{1
+-- {{{1 Keybinds
 vim.keymap.set("n", "<leader>gc", "<cmd>edit /home/james/.config/nvim/<cr>")
 vim.keymap.set("n", "<leader>gg", "<cmd>edit $HOME/Documents/todo/todo.txt<cr>")
-
--- Autocommands {{{1
--- TODO strip whitespace on save
-
--- Plugins {{{1
+vim.keymap.set("n", "<cr>", "<cmd>:nohlsearch<cr>")
+-- {{{1 Plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -27,10 +22,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({
-  {
-    "stevearc/oil.nvim",
-    opts = {},
-  },
-  -- TODO presence.nvim?
-})
+require("lazy").setup("plugins")
+-- {{{1 Autocommands
+-- TODO strip whitespace on save
