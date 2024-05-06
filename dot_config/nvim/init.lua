@@ -11,7 +11,7 @@ vim.opt.signcolumn = "no"
 -- vim.g.markdown_recommended_style = 0
 -- {{{1 Keybinds
 -- {{{2 Quick-access Files
-vim.keymap.set({"n", "v"}, "<leader>gc", "<cmd>edit /home/james/.config/nvim/<cr>")
+vim.keymap.set({"n", "v"}, "<leader>gc", "<cmd>edit $HOME/.config/nvim/<cr>")
 vim.keymap.set({"n", "v"}, "<leader>gz", "<cmd>edit $HOME/Documents/zk<cr>")
 vim.keymap.set({"n", "v"}, "<leader>gg", "<cmd>edit $HOME/Documents/todo/todo.txt<cr>")
 -- {{{2 Buffers
