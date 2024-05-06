@@ -1,0 +1,4 @@
+{{- if ne .chezmoi.hostname "upsetwater" }}
+*
+!dot_config/nvim
+{{- end }}
