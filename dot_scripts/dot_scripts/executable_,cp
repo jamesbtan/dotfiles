@@ -1,9 +1,0 @@
-#!/bin/sh
-
-color=$(grim -g "$(slurp -p)" -t ppm - \
-    | convert - -format '%[pixel:p{0,0}]' txt:- \
-    | tail -n 1 \
-    | sed 's/  /\t/g' \
-    | cut -f 2)
-
-printf '%s' "$color" | wl-copy

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-id=$(xinput | grep Touchpad | sed 's/.*=//;s/[[:space:]].*//')
-prop=$(xinput list-props "$id" | grep 'Tapping Enabled' | grep -v 'Default' | sed 's/.*(//;s/).*//')
-xinput set-prop "$id" "$prop" 1
-prop=$(xinput list-props "$id" | grep 'Disable While Typing' | grep -v 'Default' | sed 's/.*(//;s/).*//')
-xinput set-prop "$id" "$prop" 0

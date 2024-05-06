@@ -1,4 +1,0 @@
-#!/bin/sh
-
-tab="$HOME"/bin/TabFS/fs/mnt/tabs/last-focused
-printf "[%s](%s)" "$(cat "$tab"/title.txt)" "$(cat "$tab"/url.txt)"
