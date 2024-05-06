@@ -1,4 +1,5 @@
 {{- if ne .chezmoi.hostname "upsetwater" }}
 *
-!dot_config/nvim
+!.config/nvim
+!.config/nvim/**
 {{- end }}
