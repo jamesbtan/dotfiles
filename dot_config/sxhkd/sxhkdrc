@@ -36,7 +36,11 @@ super + alt + c
     pkill antimicrox; plover_send_command quit
 
 super + p
-    sleep .1; xdotool type "$(date +%F)"
+    date +%F | tr -d '\n' | xsel -ib
+super + shift + p
+    date +%Y%m%d%H%M | tr -d '\n' | xsel -ib
+super + alt + p
+    date +%Y%m%d%H%M%S | tr -d '\n' | xsel -ib
 
 XF86Audio{Raise,Lower}Volume
     pamixer -{i,d} 5

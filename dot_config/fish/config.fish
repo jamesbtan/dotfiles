@@ -38,6 +38,7 @@ end
 
 alias e="emacsclient --create-frame --no-wait"
 alias clc="calcurse"
+alias lg="lazygit"
 alias g="nvim"
 alias gf="g (fzf)"
 alias gg="g ~/Documents/todo/todo.txt"
@@ -51,8 +52,9 @@ fish_add_path "$HOME"/.luarocks/bin
 fish_add_path "$HOME"/.bun/bin
 fish_add_path "$HOME"/.scripts
 fish_add_path "$HOME"/.local/bin
+fish_add_path "$HOME"/.local/share/gem/ruby/3.0.0/bin
 
-set -x EDITOR 'kak'
+set -x EDITOR 'nvim'
 set -x QT_QPA_PLATFORMTHEME qt5ct
 
 set -x XDG_CONFIG_HOME "$HOME"/.config

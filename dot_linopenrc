@@ -14,8 +14,8 @@ audio: mpv
 image: imv
 .exe: wine
 .eXe: wine
-.csv: kak->interm
-text: kak->interm
+.csv: nvim->interm
+text: nvim->interm
 
 .docx: libreoffice
 .xlsx: libreoffice
